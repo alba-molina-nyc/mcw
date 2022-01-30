@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Job Application List </h1>
+
+{% for AppTracker in object_list %}
+
+{{ AppTracker }}
+{{ AppTracker.title }}
+{{ AppTracker.company_name }}
+{{ AppTracker.salary }}
+{{ AppTracker.location }}
+
+
+
+
+
+{% endfor %}
+
+{% endblock %}
