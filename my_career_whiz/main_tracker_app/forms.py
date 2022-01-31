@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import AppTracker
+from .models import AppTracker, Contact
 
 class AppTrackerForm(ModelForm):
     class Meta: 
@@ -13,6 +13,17 @@ form = AppTrackerForm()
 app = AppTracker.objects.get(pk=1)
 form = AppTrackerForm(instance=app)
 
+
+class ContactForm(ModelForm):
+    class Meta:
+        model = Contact
+        fields = '__all__'
+
+form = ContactForm()
+
+# Creating a form to change an existing application
+app = Contact.objects.get(pk=1)
+form = ContactForm(instance=app)
 
 # [
 #             'jobpost_title',
