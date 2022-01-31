@@ -3,7 +3,7 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from .forms import AppTrackerForm
-from .models import AppTracker
+from .models import AppTracker, Contact
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
 
@@ -20,6 +20,11 @@ class AppsCreate(CreateView):
     template_name = 'apps/app_form.html'
     fields = '__all__'
     success_url = '/applications/'
+
+
+class ContactList(ListView):
+    model = Contact
+    template_name = 'contacts/index.html'
 
 #  def applications_index(request): 
 #     model: AppTracker.objects.all()

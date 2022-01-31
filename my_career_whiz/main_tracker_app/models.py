@@ -1,5 +1,8 @@
+from statistics import mode
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
+
 
 
 # Create your models here.
@@ -39,5 +42,28 @@ class AppTracker(models.Model):
     
     def get_absolute_url(self):
         return reverse('detail', kwargs={'app_id': self.id})
+
+
+class Contact(models.Model): 
+    CONTACT_STATUS = (
+        ('LR', 'Sent LinkedIn Request'),
+        ('LM', 'Sent LinkedIn Message'),
+        ('GI', 'Got an intro'),
+        ('SI', 'Scheduled Interview'),
+    )
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    title = models.CharField(max_length=75)
+    company_name = models.CharField(max_length=250)
+    email = models.CharField(max_length=100)
+    linkedin = models.URLField(max_length=200)
+    status = models.CharField(
+        max_length=2,
+        choices=CONTACT_STATUS)
+
     
+    
+ 
+    
+  
 
